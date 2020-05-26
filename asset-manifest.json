@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-wheel-of-prizes/static/css/main.d832607b.chunk.css",
+    "main.js": "/react-wheel-of-prizes/static/js/main.d32713b5.chunk.js",
+    "main.js.map": "/react-wheel-of-prizes/static/js/main.d32713b5.chunk.js.map",
+    "runtime-main.js": "/react-wheel-of-prizes/static/js/runtime-main.dad76a84.js",
+    "runtime-main.js.map": "/react-wheel-of-prizes/static/js/runtime-main.dad76a84.js.map",
+    "static/js/2.799c7851.chunk.js": "/react-wheel-of-prizes/static/js/2.799c7851.chunk.js",
+    "static/js/2.799c7851.chunk.js.map": "/react-wheel-of-prizes/static/js/2.799c7851.chunk.js.map",
+    "index.html": "/react-wheel-of-prizes/index.html",
+    "precache-manifest.be779fa615873a7dce6547ab4791bdf7.js": "/react-wheel-of-prizes/precache-manifest.be779fa615873a7dce6547ab4791bdf7.js",
+    "service-worker.js": "/react-wheel-of-prizes/service-worker.js",
+    "static/css/main.d832607b.chunk.css.map": "/react-wheel-of-prizes/static/css/main.d832607b.chunk.css.map",
+    "static/js/2.799c7851.chunk.js.LICENSE.txt": "/react-wheel-of-prizes/static/js/2.799c7851.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dad76a84.js",
+    "static/js/2.799c7851.chunk.js",
+    "static/css/main.d832607b.chunk.css",
+    "static/js/main.d32713b5.chunk.js"
+  ]
+}
