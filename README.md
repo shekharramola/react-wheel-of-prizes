@@ -12,8 +12,6 @@ npm install --save react-wheel-of-prizes
 Before spinning, this is how it will look
 
 ![before spinning](./before.png)
-
-
 After spinning, this is how it will look
 ![after spinning](./after.png)
 This component package is fully configurable. you should pass your own array of seg_colors, array of segments. these are compulsory while winning_segment is optional. if it is not provided then it will be completely rendom. there is a callbak function onFinished where you will get the winning segment.
