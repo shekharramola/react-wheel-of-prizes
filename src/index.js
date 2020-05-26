@@ -5,9 +5,13 @@ export const WheelComponent = ({
   segments,
   seg_colors,
   winning_segment,
-  onFinished
+  onFinished,
+  primaryColor,
+  contrastColor,
+  buttonText
 }) => {
   let current_segment = ''
+  let isStarted = false;
   const [isFinished, setFinished] = useState(false)
   let timerHandle = 0
   let timerDelay = 33
@@ -46,6 +50,7 @@ export const WheelComponent = ({
     canvasContext = canvas.getContext('2d')
   }
   const spin = () => {
+    isStarted = true;
     if (timerHandle === 0) {
       spinStart = new Date().getTime()
       maxSpeed = Math.PI / (16 + Math.random())
@@ -118,7 +123,7 @@ export const WheelComponent = ({
     ctx.save()
     ctx.translate(centerX, centerY)
     ctx.rotate((lastAngle + angle) / 2)
-    ctx.fillStyle = '#ffffff'
+    ctx.fillStyle = contrastColor || 'white'
     ctx.font = 'bold 1em proxima-nova'
     ctx.fillText(value.substr(0, 20), size / 2 + 20, 0)
     ctx.restore()
@@ -130,7 +135,7 @@ export const WheelComponent = ({
     let len = segments.length
     let PI2 = Math.PI * 2
     ctx.lineWidth = 1
-    ctx.strokeStyle = '#131848'
+    ctx.strokeStyle = primaryColor || 'black'
     ctx.textBaseline = 'middle'
     ctx.textAlign = 'center'
     ctx.font = '1em proxima-nova'
@@ -139,30 +144,43 @@ export const WheelComponent = ({
       drawSegment(i - 1, lastAngle, angle)
       lastAngle = angle
     }
-    ctx.beginPath()
-    ctx.arc(centerX, centerY, 50, 0, PI2, false)
-    ctx.closePath()
-    ctx.fillStyle = '#131848'
-    ctx.lineWidth = 10
-    ctx.strokeStyle = '#ffffff'
-    ctx.fill()
-    ctx.stroke()
-    ctx.beginPath()
-    ctx.arc(centerX, centerY, size, 0, PI2, false)
-    ctx.closePath()
-    ctx.lineWidth = 10
-    ctx.strokeStyle = '#131848'
-    ctx.stroke()
+
+     // Draw a center circle
+     ctx.beginPath();
+     ctx.arc(centerX, centerY, 50, 0, PI2, false);
+     ctx.closePath();
+     ctx.fillStyle =primaryColor || "black";
+     ctx.lineWidth = 10;
+     ctx.strokeStyle = contrastColor || "white";
+     ctx.fill();
+     ctx.font = "bold 1em proxima-nova";
+     ctx.fillStyle = contrastColor || 'white';
+     ctx.textAlign = "center";
+     ctx.fillText(buttonText || 'Spin',
+       centerX,
+       centerY + 3
+     );
+     ctx.stroke();
+ 
+     // Draw outer circle
+     ctx.beginPath();
+     ctx.arc(centerX, centerY, size, 0, PI2, false);
+     ctx.closePath();
+ 
+     ctx.lineWidth = 10;
+     ctx.strokeStyle = primaryColor || "black";
+     ctx.stroke();
+  
   }
 
   const drawNeedle = () => {
     let ctx = canvasContext
     ctx.lineWidth = 1
-    ctx.strokeStyle = '#ffffff'
-    ctx.fileStyle = '#fff'
+    ctx.strokeStyle = contrastColor || 'white'
+    ctx.fileStyle = contrastColor || 'white'
     ctx.beginPath()
-    ctx.moveTo(centerX + 20, centerY - 30)
-    ctx.lineTo(centerX - 20, centerY - 30)
+    ctx.moveTo(centerX + 20, centerY - 50)
+    ctx.lineTo(centerX - 20, centerY - 50)
     ctx.lineTo(centerX, centerY - 70)
     ctx.closePath()
     ctx.fill()
@@ -174,10 +192,10 @@ export const WheelComponent = ({
     if (i < 0) i = i + segments.length
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = primaryColor || "black";
     ctx.font = 'bold 1.5em proxima-nova'
     current_segment = segments[i]
-    ctx.fillText(current_segment, centerX + 10, centerY + size + 50)
+    isStarted && ctx.fillText(current_segment, centerX + 10, centerY + size + 50)
   }
   const clear = () => {
     let ctx = canvasContext
