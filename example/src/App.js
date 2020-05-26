@@ -22,7 +22,10 @@ const App = () => {
   segments = {segments}
   seg_colors = {seg_colors} 
   winning_segment ='won 10'
-  onFinished={(winner)=>onFinished(winner)}/>
+  onFinished={(winner)=>onFinished(winner)}
+  primaryColor='black'
+  contrastColor='white'
+  buttonText='Spin'/>
 }
 
 export default App
