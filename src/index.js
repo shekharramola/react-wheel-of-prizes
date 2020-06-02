@@ -14,14 +14,14 @@ export const WheelComponent = ({
   let isStarted = false;
   const [isFinished, setFinished] = useState(false)
   let timerHandle = 0
-  let timerDelay = 33
+  let timerDelay = segments.length
   let angleCurrent = 0
   let angleDelta = 0
   let size = 290
   let canvasContext = null
-  let maxSpeed = Math.PI / 16
-  let upTime = 500
-  let downTime = 10000
+  let maxSpeed = Math.PI / (segments.length)
+  let upTime = segments.length*100;
+  let downTime = segments.length*1000;
   let spinStart = 0
   let frames = 0
   let centerX = 300
@@ -53,7 +53,8 @@ export const WheelComponent = ({
     isStarted = true;
     if (timerHandle === 0) {
       spinStart = new Date().getTime()
-      maxSpeed = Math.PI / (16 + Math.random())
+      // maxSpeed = Math.PI / ((segments.length*2) + Math.random())
+      maxSpeed = Math.PI / ((segments.length))
       frames = 0
       timerHandle = setInterval(onTimerTick, timerDelay)
     }
@@ -69,7 +70,9 @@ export const WheelComponent = ({
       angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2)
     } else {
       if (winning_segment) {
-        if (current_segment === winning_segment && frames > 240) {
+        if (current_segment === winning_segment && frames > segments.length*20) {
+          angleDelta =
+          maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2)
           progress = 1
           
           
@@ -125,7 +128,7 @@ export const WheelComponent = ({
     ctx.rotate((lastAngle + angle) / 2)
     ctx.fillStyle = contrastColor || 'white'
     ctx.font = 'bold 1em proxima-nova'
-    ctx.fillText(value.substr(0, 20), size / 2 + 20, 0)
+    ctx.fillText(value.substr(0, 21), size / 2 + 20, 0)
     ctx.restore()
   }
 
