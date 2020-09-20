@@ -17,7 +17,7 @@ After spinning, this is how it will look
 
 This component package is fully configurable. you should pass your own array of seg_colors, array of segments. these are compulsory while winning_segment is optional. if it is not provided then it will be completely random. there is a callback function onFinished where you will get the winning segment.
 
-Also if you want to match with your theme, you can provide primary, contrast color and also the button text. these all are optional. 
+Also if you want to match with your theme, you can provide primary, contrast color and also the button text. these all are optional.
 
 ## Usage
 
@@ -29,7 +29,7 @@ import 'react-wheel-of-prizes/dist/index.css'
 
 const App = () => {
   const segments = ['better luck next time', 'won 70', 'won 10','better luck next time', 'won 2', 'won uber pass', 'better luck next time', 'won a voucher'];
-  const seg_colors = [
+  const segColors = [
     "#EE4040",
     "#F0CF50",
     "#815CD1",
@@ -44,8 +44,8 @@ const App = () => {
   }
   return <WheelComponent
   segments = {segments}
-  seg_colors = {seg_colors} 
-  winning_segment ='won 10'
+  segColors = {segColors}
+  winningSegment ='won 10'
   onFinished={(winner)=>onFinished(winner)}
   primaryColor='black'
   contrastColor='white'
