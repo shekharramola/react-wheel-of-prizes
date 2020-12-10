@@ -19,6 +19,7 @@ This component package is fully configurable. you should pass your own array of 
 
 Also if you want to match with your theme, you can provide primary, contrast color and also the button text. these all are optional.
 
+Wheel of fortune will run only once by default but if you want to run it more than once then you need to pass `isOnlyOnce={false}`
 ## Usage
 
 ```jsx
@@ -49,7 +50,8 @@ const App = () => {
   onFinished={(winner)=>onFinished(winner)}
   primaryColor='black'
   contrastColor='white'
-  buttonText='Spin'/>
+  buttonText='Spin'
+  isOnlyOnce = {false}/>
 }
 ```
 

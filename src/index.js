@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
- const WheelComponent = ({
+const WheelComponent = ({
   segments,
   segColors,
   winningSegment,
   onFinished,
   primaryColor,
   contrastColor,
-  buttonText
+  buttonText,
+  isOnlyOnce
 }) => {
   let currentSegment = ''
   let isStarted = false
@@ -205,7 +206,7 @@ import React, { useEffect, useState } from 'react'
         width='1000'
         height='800'
         style={{
-          pointerEvents: isFinished ? 'none' : 'auto'
+          pointerEvents: isFinished && !isOnlyOnce ? 'none' : 'auto'
         }}
       />
     </div>
