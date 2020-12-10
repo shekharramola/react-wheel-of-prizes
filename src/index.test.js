@@ -1,4 +1,4 @@
-import { ExampleComponent } from '.'
+import { WheelComponent } from '.'
 
 describe('WheelComponent', () => {
   it('is truthy', () => {
