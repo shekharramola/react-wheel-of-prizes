@@ -51,7 +51,10 @@ const App = () => {
         primaryColor='black'
         contrastColor='white'
         buttonText='Spin'
-        isOnlyOnce = {true}
+        isOnlyOnce={true}
+        size={290}
+        upDuration={100}
+        downDuration={1000}
       />
     </React.Fragment>
   )

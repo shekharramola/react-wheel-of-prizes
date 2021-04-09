@@ -8,7 +8,10 @@ const WheelComponent = ({
   primaryColor,
   contrastColor,
   buttonText,
-  isOnlyOnce
+  isOnlyOnce = true,
+  size = 290,
+  upDuration = 100,
+  downDuration = 1000
 }) => {
   let currentSegment = ''
   let isStarted = false
@@ -17,11 +20,10 @@ const WheelComponent = ({
   const timerDelay = segments.length
   let angleCurrent = 0
   let angleDelta = 0
-  const size = 290
   let canvasContext = null
   let maxSpeed = Math.PI / `${segments.length}`
-  const upTime = segments.length * 100
-  const downTime = segments.length * 1000
+  const upTime = segments.length * upDuration
+  const downTime = segments.length * downDuration
   let spinStart = 0
   let frames = 0
   const centerX = 300
