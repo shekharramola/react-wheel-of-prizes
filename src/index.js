@@ -11,7 +11,8 @@ const WheelComponent = ({
   isOnlyOnce = true,
   size = 290,
   upDuration = 100,
-  downDuration = 1000
+  downDuration = 1000,
+  fontFamily = 'proxima-nova'
 }) => {
   let currentSegment = ''
   let isStarted = false
@@ -128,7 +129,7 @@ const WheelComponent = ({
     ctx.translate(centerX, centerY)
     ctx.rotate((lastAngle + angle) / 2)
     ctx.fillStyle = contrastColor || 'white'
-    ctx.font = 'bold 1em proxima-nova'
+    ctx.font = 'bold 1em ' + fontFamily
     ctx.fillText(value.substr(0, 21), size / 2 + 20, 0)
     ctx.restore()
   }
@@ -142,7 +143,7 @@ const WheelComponent = ({
     ctx.strokeStyle = primaryColor || 'black'
     ctx.textBaseline = 'middle'
     ctx.textAlign = 'center'
-    ctx.font = '1em proxima-nova'
+    ctx.font = '1em ' + fontFamily
     for (let i = 1; i <= len; i++) {
       const angle = PI2 * (i / len) + angleCurrent
       drawSegment(i - 1, lastAngle, angle)
@@ -157,7 +158,7 @@ const WheelComponent = ({
     ctx.lineWidth = 10
     ctx.strokeStyle = contrastColor || 'white'
     ctx.fill()
-    ctx.font = 'bold 1em proxima-nova'
+    ctx.font = 'bold 1em ' + fontFamily
     ctx.fillStyle = contrastColor || 'white'
     ctx.textAlign = 'center'
     ctx.fillText(buttonText || 'Spin', centerX, centerY + 3)
@@ -193,7 +194,7 @@ const WheelComponent = ({
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     ctx.fillStyle = primaryColor || 'black'
-    ctx.font = 'bold 1.5em proxima-nova'
+    ctx.font = 'bold 1.5em ' + fontFamily
     currentSegment = segments[i]
     isStarted && ctx.fillText(currentSegment, centerX + 10, centerY + size + 50)
   }
