@@ -34,6 +34,7 @@ Wheel of fortune will run only once by default but if you want to run it more th
 | isOnlyOnce     |     true      |      Yes |
 | upDuration     |      100      |      Yes |
 | downDuration   |     1000      |      Yes |
+| fontFamily     |'proxima-nova' |      Yes |
 
 ## Usage
 
@@ -80,6 +81,7 @@ const App = () => {
       size={290}
       upDuration={100}
       downDuration={1000}
+      fontFamily='Arial'
     />
   )
 }
