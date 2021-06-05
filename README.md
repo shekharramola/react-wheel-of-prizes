@@ -86,8 +86,9 @@ const App = () => {
   )
 }
 ```
+If you like this project, you can buy me a coffee :)
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](YOUR_EMAIL_CODE)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](shekhar.ramola.cse@gmail.com)
 
 ## License
 
