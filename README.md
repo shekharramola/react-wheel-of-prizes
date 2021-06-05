@@ -87,6 +87,9 @@ const App = () => {
 }
 ```
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](YOUR_EMAIL_CODE)
+
 ## License
 
 GNU General Public License v3.0 © [shekharramola](https://github.com/shekharramola)
+
