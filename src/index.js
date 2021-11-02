@@ -14,7 +14,6 @@ const WheelComponent = ({
   downDuration = 1000,
   fontFamily = 'proxima-nova'
 }) => {
-  const canvasRef = useRef(null)
   let currentSegment = ''
   let isStarted = false
   const [isFinished, setFinished] = useState(false)
@@ -56,14 +55,13 @@ const WheelComponent = ({
   }
   const spin = () => {
     isStarted = true
-    console.log(canvasContext)
-    // if (timerHandle === 0) {
-    //   spinStart = new Date().getTime()
-    //   // maxSpeed = Math.PI / ((segments.length*2) + Math.random())
-    //   maxSpeed = Math.PI / segments.length
-    //   frames = 0
-    //   timerHandle = setInterval(onTimerTick, timerDelay)
-    // }
+    if (timerHandle === 0) {
+      spinStart = new Date().getTime()
+      // maxSpeed = Math.PI / ((segments.length*2) + Math.random())
+      maxSpeed = Math.PI / segments.length
+      frames = 0
+      timerHandle = setInterval(onTimerTick, timerDelay)
+    }
   }
   const onTimerTick = () => {
     frames++
@@ -176,9 +174,6 @@ const WheelComponent = ({
     ctx.strokeStyle = primaryColor
     ctx.stroke()
   }
-  const handleClick = (event) => {
-console.log(event)
-  }
 
   const drawNeedle = () => {
     const ctx = canvasContext
@@ -217,8 +212,6 @@ console.log(event)
         style={{
           pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto'
         }}
-        ref={canvasRef}
-        onClick={()=>handleClick(canvasRef)}
       />
     </div>
   )
