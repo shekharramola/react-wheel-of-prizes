@@ -26,25 +26,15 @@ export const WheelComponent = ({
   contrastColor = 'white',
   buttonText = 'Spin',
   isOnlyOnce = true,
-  size = window.innerWidth,
+  size = typeof window !== 'undefined' ? window.innerWidth : 300,
   upDuration = 100,
   downDuration = 1000,
   fontFamily = 'proxima-nova',
   fontSize = '1em',
   outlineWidth = 10
 }: WheelComponentProps) => {
-  const randomString = () => {
-    const chars =
-      '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('')
-    const length = 8
-    let str = ''
-    for (let i = 0; i < length; i++) {
-      str += chars[Math.floor(Math.random() * chars.length)]
-    }
-    return str
-  }
-  const canvasId = useRef(`canvas-${randomString()}`)
-  const wheelId = useRef(`wheel-${randomString()}`)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const wheelRef = useRef<HTMLDivElement | null>(null)
   const dimension = (size + 20) * 2
   let currentSegment = ''
   let isStarted = false
@@ -74,19 +64,16 @@ export const WheelComponent = ({
   }
 
   const initCanvas = () => {
-    let canvas: HTMLCanvasElement | null = document.getElementById(
-      canvasId.current
-    ) as HTMLCanvasElement
+    let canvas: HTMLCanvasElement | null = canvasRef.current
 
-    if (navigator.userAgent.indexOf('MSIE') !== -1) {
+    if (typeof navigator !== 'undefined' && navigator.userAgent.indexOf('MSIE') !== -1) {
       canvas = document.createElement('canvas')
       canvas.setAttribute('width', `${dimension}`)
       canvas.setAttribute('height', `${dimension}`)
-      canvas.setAttribute('id', canvasId.current)
-      document.getElementById(wheelId.current)?.appendChild(canvas)
+      wheelRef.current?.appendChild(canvas)
     }
     canvas?.addEventListener('click', spin, false)
-    canvasContext = canvas?.getContext('2d')
+    canvasContext = canvas ? canvas.getContext('2d') : null
   }
   const spin = () => {
     isStarted = true
@@ -252,9 +239,9 @@ export const WheelComponent = ({
   }
 
   return (
-    <div id={wheelId.current}>
+    <div ref={wheelRef}>
       <canvas
-        id={canvasId.current}
+        ref={canvasRef}
         width={dimension}
         height={dimension}
         style={{

@@ -43,7 +43,6 @@ Wheel of fortune will run only once by default but if you want to run it more th
 import React, { Component } from 'react'
 
 import WheelComponent from 'react-wheel-of-prizes'
-import 'react-wheel-of-prizes/dist/index.css'
 
 const App = () => {
   const segments = [
