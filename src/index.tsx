@@ -17,7 +17,7 @@ export interface WheelComponentProps {
   outlineWidth?: number
 }
 
-const WheelComponent = ({
+export const WheelComponent = ({
   segments,
   segColors,
   winningSegment,
